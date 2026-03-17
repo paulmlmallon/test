@@ -1,28 +1,105 @@
 <!doctype html>
 <html lang="en">
-
 <head>
+    <!-- Basic page setup -->
     <meta charset="UTF-8">
+
+    <!-- Makes the layout scale properly on phones/tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Browser tab title -->
     <title>OpenRent Property Search</title>
+
+    <!-- Connect this HTML file to the CSS file -->
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+    <!--
+        .page = the main page wrapper
+
+        ELI5:
+        Think of this like the big outer frame in Figma that keeps
+        the whole page centered and stops it getting too wide.
+
+        Interview angle:
+        "I'm starting with a page-level wrapper so the layout has a
+        clear max width and stays controlled on larger screens."
+    -->
     <div class="page">
+
+        <!--
+            HEADER / TOP NAV
+
+            Figma:
+            This is like the top frame containing:
+            - logo
+            - search
+            - nav/actions
+
+            HTML note:
+            <header> is a built-in HTML tag for top page content.
+            It still needs a class so we can style it.
+        -->
         <header class="topbar">
+
+            <!--
+                Left side of the header.
+                This is one cluster/group.
+
+                Figma:
+                Like one auto-layout group on the left.
+            -->
             <div class="topbar-left">
+                <!-- Brand/logo -->
                 <div class="logo">OpenRent</div>
+
+                <!--
+                    Search input placeholder
+
+                    Important:
+                    This is not a real input yet.
+                    It is just a styled box for layout practice.
+
+                    Two classes:
+                    - search = what this thing specifically is
+                    - control = shared style pattern
+
+                    Interview angle:
+                    This shows component-specific class + reusable shared class.
+                -->
                 <div class="search control">Search by area, station or postcode</div>
             </div>
 
+            <!--
+                Right side of the header.
+                Another cluster/group.
+
+                Figma:
+                Another auto-layout group on the right.
+            -->
             <div class="topbar-right">
                 <div class="nav-link">Landlords</div>
                 <div class="nav-link">Tenants</div>
+
+                <!-- Shared control styling reused again -->
                 <div class="nav-action control">Account</div>
             </div>
         </header>
 
+        <!--
+            FILTER BAR
+
+            Figma:
+            This is the row of filters underneath the top nav.
+
+            Notes:
+            - surface = shared bordered panel style
+            - each filter also uses control = shared bordered control style
+
+            Interview angle:
+            This is good design-system thinking because repeated UI patterns
+            are reused instead of rewritten every time.
+        -->
         <div class="filters-bar surface">
             <div class="filter control">Price</div>
             <div class="filter control">Beds</div>
@@ -31,8 +108,38 @@
             <div class="filter control">More Filters</div>
         </div>
 
+        <!--
+            MAIN CONTENT AREA
+
+            Figma:
+            This is the big page split:
+            - left = listings
+            - right = map
+
+            HTML:
+            <main> is the main visible content of the page.
+
+            CSS:
+            This will be a grid because it is a bigger page-level split.
+        -->
         <main class="layout">
+
+            <!--
+                LISTINGS COLUMN
+
+                surface = shared panel/card look
+            -->
             <div class="listings">
+
+                <!--
+                    RESULTS HEADER
+
+                    Figma:
+                    Top part of the listings area:
+                    - title
+                    - count
+                    - sort control
+                -->
                 <div class="results-header">
                     <div>
                         <h1 class="results-title">243 Properties to Rent in London</h1>
@@ -42,6 +149,20 @@
                     <div class="sort control">Sort by: Newest</div>
                 </div>
 
+                <!--
+                    PROPERTY CARD 1
+
+                    Figma:
+                    One repeated card component inside the list.
+
+                    Structure:
+                    - image
+                    - info
+                    - actions
+
+                    Interview angle:
+                    "This is a reusable card pattern."
+                -->
                 <div class="property-card surface">
                     <div class="property-image"></div>
 
@@ -58,6 +179,13 @@
                             Bright modern flat with open-plan living space, close to transport and local amenities.
                         </div>
 
+                        <!--
+                            Card actions
+
+                            Reuse:
+                            - primary-button = stronger CTA style
+                            - control = standard bordered control style
+                        -->
                         <div class="property-actions">
                             <div class="property-button primary-button">View details</div>
                             <div class="property-button control">Save</div>
@@ -65,6 +193,7 @@
                     </div>
                 </div>
 
+                <!-- PROPERTY CARD 2 -->
                 <div class="property-card surface">
                     <div class="property-image"></div>
 
@@ -88,6 +217,7 @@
                     </div>
                 </div>
 
+                <!-- PROPERTY CARD 3 -->
                 <div class="property-card surface">
                     <div class="property-image"></div>
 
@@ -112,16 +242,26 @@
                 </div>
             </div>
 
+            <!--
+                MAP COLUMN
+
+                Figma:
+                Right panel with little toolbar on top and map underneath.
+
+                HTML note:
+                <aside> can be used for secondary/side content.
+                It behaves similarly to a div for layout unless styled.
+            -->
             <aside class="map-panel surface">
                 <div class="map-toolbar">
                     <div class="map-chip control">Draw area</div>
                     <div class="map-chip control">Schools</div>
                 </div>
 
+                <!-- Just a visual placeholder for now -->
                 <div class="map-placeholder">Map</div>
             </aside>
         </main>
     </div>
 </body>
-
 </html>
